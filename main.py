@@ -1,3 +1,5 @@
+global SCORE
+
 def start_up():
     print("~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~")
     print("~ Welcome To: Environmental Activists ~")
@@ -11,8 +13,25 @@ def start_up():
     print("You need to decide which option to choose.")
     print("Choose wisely, as your answers will determine if you are fit to be an Environmental Activist, or if you are doomed for all eternity.")
 
+
+def add_score(value):
+    SCORE += value
+
+
+def situations(situation):
+    print(situation.get("scenario"))
+    user_answer = input(situation.get("answers"))
+    if user_answer == situation.get("answer"):
+        print("You've chosen the most environmentally friendly option.")
+        add_score(10)
+    elif user_answer == situation.get(""):
+        print("You've picked the in-the-middle option.")
+    else:
+        print("You've chosen the least environmentally friendly option.")
+        add_score(-5)
+
+
 def main():
     start_up()
-    print("Hello, world!")
 
 main()
