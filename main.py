@@ -1,4 +1,4 @@
-from Scenarios import scenario1
+from scenario1 import scenario1
 global SCORE
 
 def start_up():
@@ -22,15 +22,22 @@ def add_score(value):
 def situations(situation):
     print(type(situation))
     print(situation.get("scenario"))
-    user_answer = input(situation.get("answers"))
-    if user_answer == situation.get("answer"):
-        print("You've chosen the most environmentally friendly option.")
-        add_score(10)
-    elif user_answer == situation.get(""):
-        print("You've picked the in-the-middle option.")
-    else:
-        print("You've chosen the least environmentally friendly option.")
-        add_score(-5)
+    valid_input = False
+    while valid_input == False:
+        user_answer = input(situation.get("answers"))
+        if user_answer.lower() == situation.get("best_answer"):
+            print("You've chosen the most environmentally friendly option.")
+            #add_score(10)
+            valid_input = True
+        elif user_answer.lower() == situation.get("neutral_answer"):
+            print("You've picked the in-the-middle option.")
+            valid_input = True
+        elif user_answer.lower() == situation.get("negative_answer"):
+            print("You've chosen the least environmentally friendly option.")
+            #add_score(-5)
+            valid_input = True
+        else:
+            print("Please pick 'a', 'b', or 'c'")
 
 
 def main():
