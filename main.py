@@ -20,6 +20,7 @@ def add_score(value):
 
 
 def situations(situation):
+    print(type(situation))
     print(situation.get("scenario"))
     user_answer = input(situation.get("answers"))
     if user_answer == situation.get("answer"):
