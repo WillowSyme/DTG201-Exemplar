@@ -1,3 +1,4 @@
+from Scenarios import scenario1
 global SCORE
 
 def start_up():
@@ -33,5 +34,6 @@ def situations(situation):
 
 def main():
     start_up()
+    situations(scenario1)
 
 main()
