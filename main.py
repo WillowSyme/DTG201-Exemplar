@@ -1,4 +1,4 @@
-from scenario1 import scenario1
+import scenarios
 global SCORE
 
 def start_up():
@@ -20,7 +20,6 @@ def add_score(value):
 
 
 def situations(situation):
-    print(type(situation))
     print(situation.get("scenario"))
     valid_input = False
     while valid_input == False:
@@ -42,6 +41,7 @@ def situations(situation):
 
 def main():
     start_up()
-    situations(scenario1)
+    situations(scenarios.scenario1)
+    situations(scenarios.scenario2)
 
 main()
