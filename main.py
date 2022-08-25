@@ -1,5 +1,7 @@
 import scenarios
-global SCORE
+
+SCORE = 0
+
 
 def start_up():
     print("~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~")
@@ -10,12 +12,18 @@ def start_up():
     print("Thank you, {}.".format(name))
     print("Your journey will begin shortly.")
     print("\n")
-    print("You will be presented with 10 scenarios, each with 3 options for you to choose from.")
+    print(
+        "You will be presented with 10 scenarios, each with 3 options for you to choose from."
+    )
     print("You need to decide which option to choose.")
-    print("Choose wisely, as your answers will determine if you are fit to be an Environmental Activist, or if you are doomed for all eternity.")
+    print(
+        "Choose wisely, as your answers will determine if you are fit to be an Environmental Activist, or if you are doomed for all eternity."
+    )
+    print("\n")
 
 
 def add_score(value):
+    global SCORE
     SCORE += value
 
 
@@ -41,7 +49,35 @@ def situations(situation):
 
 def main():
     start_up()
+    print("Scenario One")
     situations(scenarios.scenario1)
+    print("\n")
+    print("Scenario Two")
     situations(scenarios.scenario2)
+    print("\n")
+    print("Scenario Three")
+    situations(scenarios.scenario3)
+    print("\n")
+    print("Scenario Four")
+    situations(scenarios.scenario4)
+    print("\n")
+    print("Scenario Five")
+    situations(scenarios.scenario5)
+    print("\n")
+    print("Scenario Six")
+    situations(scenarios.scenario6)
+    print("\n")
+    print("Scenario Seven")
+    situations(scenarios.scenario7)
+    print("\n")
+    print("Scenario Eight")
+    situations(scenarios.scenario8)
+    print("\n")
+    print("Scenario Nine")
+    situations(scenarios.scenario9)
+    print("\n")
+    print("Scenario Ten")
+    situations(scenarios.scenario10)
+
 
 main()
