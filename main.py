@@ -34,14 +34,14 @@ def situations(situation):
         user_answer = input(situation.get("answers"))
         if user_answer.lower() == situation.get("best_answer"):
             print("You've chosen the most environmentally friendly option.")
-            #add_score(10)
+            add_score(10)
             valid_input = True
         elif user_answer.lower() == situation.get("neutral_answer"):
             print("You've picked the in-the-middle option.")
             valid_input = True
         elif user_answer.lower() == situation.get("negative_answer"):
             print("You've chosen the least environmentally friendly option.")
-            #add_score(-5)
+            add_score(-5)
             valid_input = True
         else:
             print("Please pick 'a', 'b', or 'c'")
@@ -78,6 +78,6 @@ def main():
     print("\n")
     print("Scenario Ten")
     situations(scenarios.scenario10)
-
+    print(SCORE)
 
 main()
