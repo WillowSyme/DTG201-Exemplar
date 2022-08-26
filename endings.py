@@ -1,23 +1,9 @@
-ending1 = {
-    "ending" : "character is doing something",
-    "answers" : [],
-    "best_answer" : "",
-    "neutral_answer" : "",
-    "negative_answer" : ""
-}
-
-ending2 = {
-    "ending" : "character is doing something",
-    "answers" : [],
-    "best_answer" : "",
-    "neutral_answer" : "",
-    "negative_answer" : ""
-}
-
-ending3 = {
-    "ending" : "character is doing something",
-    "answers" : [],
-    "best_answer" : "",
-    "neutral_answer" : "",
-    "negative_answer" : ""
+#This is a dictionary that holds all 3 possible endings
+endings = {
+    "positive ending":
+    "Stacy is hanging out with Aroha and Mila at the gardens one afternoon. They had decided to go help pick up rubbish, but when they arrived, the gardens were already tidy. The community had come together over the past few weeks and had tidied up their act. Everyone was making an effort to use less waste, and putting their waste in the correct bins. Many people were finding ways to repurpose old items that would have been wasted to give them a new purpose. Corporations saw what was happening in communities around the world and decided to do their part too and reduced their own waste. The world is greener, the air is clearer, and the oceans are cleaner.",
+    "neutral ending":
+    "Stacy has been living life as usual. Aroha has been convincing Stacy to make less good environmental choices, but at this point Stacy doesn’t mind. Their waste is the same as everyone else, and their natural environment is kind of dreary. After a few months, Mila decides Stacy isn’t a good friend anymore as they had once bonded over their love of the planet and what they could do to help improve the situation, but Mila has noticed Stacy isn’t as serious as she is about it. Stacy is a little upset, but she still has Aroha. \n\nStacy ends up working for a corporation who makes money off of not helping the environment. Over the first few months of working there, the world slowly descends into chaos. No one cares about the environment anymore, and soon there will be no world left. Stacy’s nonchalant nature towards the environment has had the same negative effect on her environment that she could’ve just made all the bad choices anyway.",
+    "negative ending":
+    "Stacy wakes up one morning to find disaster and destruction all around her. The sun burns brightly above her, giving the nearby buildings an orange haze. She can smell plastic burning from somewhere, followed by screams. Stacy has been sleeping under the crusty remains of her wrapping paper she bought. Empty tomato sauce packets litter the stoop she is sleeping on. She tries to remember what got her here, and she remembers her last few weeks. She’s been lacking in her awareness of the environment; apparently so has everyone else. The apocalypse started not too long after she bought the wrapping paper. \n\n“Put your hands up!” A masculine voice rings out. Stacy squints in the direction the voice came, but can’t find the person who said anything. It doesn’t matter anyway. Before she has a chance to really look, she’s dead."
 }

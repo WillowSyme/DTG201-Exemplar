@@ -54,6 +54,17 @@ def situations(situation):
             print("Please pick 'a', 'b', or 'c'")
 
 
+#This function prints out the ending based on the players final score
+def print_ending():
+    global SCORE
+    if 50 <= SCORE <= 100:
+        print(endings.endings.get("positive ending"))
+    elif 0 <= SCORE < 50:
+        print(endings.endings.get("neutral ending"))
+    elif -50 <= SCORE < 0:
+        print(endings.endings.get("negative ending"))
+
+
 #This is the main function. It calls all the other functions
 def main():
     start_up()
@@ -87,7 +98,8 @@ def main():
     print("Scenario Ten")
     situations(scenarios.scenario10)
     print(SCORE)
-    
+    print_ending()
+
 
 #This calls our main function so the code will run
 main()
