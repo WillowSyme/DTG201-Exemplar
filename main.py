@@ -87,7 +87,7 @@ def main():
     print("Scenario Ten")
     situations(scenarios.scenario10)
     print(SCORE)
-
+    
 
 #This calls our main function so the code will run
 main()
