@@ -8,22 +8,24 @@ SCORE = 0
 #Start up screen
 #Prints the game name, and informs the user of how the game works
 def start_up():
-    print("~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~")
-    print("~ Welcome To: Environmental Activists ~")
-    print("~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~")
+    print("~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~\n~ Welcome To: Environmental Activists ~\n~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~")
     name = input("To begin, please enter your name: ")
-    print("Thank you, {}.".format(name))
-    print("Your journey will begin shortly.")
-    print("\n")
-    print(
-        "You will be presented with 10 scenarios, each with 3 options for you to choose from."
-    )
-    print("You need to decide which option to choose.")
-    print(
-        "Choose wisely, as your answers will determine if you are fit to be an Environmental Activist, or if you are doomed for all eternity."
-    )
-    print("\n")
+    if name.lower() == "will":
+        print(f"Thank you {name}. Now entering Admin Mode.")
+        admin_mode()
+    else:
+        print(f"Thank you, {name}.")
+        print("Your journey will begin shortly.\n\nYou will be presented with 10 scenarios, each with 3 options for you to choose from.\nYou need to decide which option to choose.\n\nChoose wisely, as your answers will determine if you are fit to be an Environmental Activist, or if you are doomed for all eternity.\n\n")
 
+
+#This function is for admin purposes - you can update scenarios/add new scenarios/delete scenarios
+def admin_mode():
+    menu_options = ["Add Scenario", "Update Scenario", "Delete Scenario", "Exit Admin Mode", "Exit Application"]
+    print("Admin Menu:")
+    print(f"{"Task":<6}{"Operation":<20}")
+    for i in range(0, 5):
+        print(f"{i:<6}{menu_options[i]:<20}")
+    
 
 #each time this function is called, it will add the parameter 'value' to the current SCORE
 def add_score(value):
@@ -56,35 +58,11 @@ def situations(situation):
 
 #This function prints out each scenario
 def call_scenarios():
-    print("Scenario One")
-    situations(scenarios.scenario1)
-    print("\n")
-    print("Scenario Two")
-    situations(scenarios.scenario2)
-    print("\n")
-    print("Scenario Three")
-    situations(scenarios.scenario3)
-    print("\n")
-    print("Scenario Four")
-    situations(scenarios.scenario4)
-    print("\n")
-    print("Scenario Five")
-    situations(scenarios.scenario5)
-    print("\n")
-    print("Scenario Six")
-    situations(scenarios.scenario6)
-    print("\n")
-    print("Scenario Seven")
-    situations(scenarios.scenario7)
-    print("\n")
-    print("Scenario Eight")
-    situations(scenarios.scenario8)
-    print("\n")
-    print("Scenario Nine")
-    situations(scenarios.scenario9)
-    print("\n")
-    print("Scenario Ten")
-    situations(scenarios.scenario10)
+    for i in range(1, len(scenarios.scenarios) + 1):
+        print(f"Scenario {i}")
+        situations(scenarios.scenarios.get(i))
+        print("\n")
+
             
 #This function prints out the ending based on the players final score
 def print_ending():
@@ -116,5 +94,7 @@ def main():
             quit()
         else:
             print("hmmm... I don't recognise that word.")
+
+            
 #This calls our main function so the code will run
 main()
