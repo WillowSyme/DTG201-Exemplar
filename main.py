@@ -5,7 +5,6 @@ from time import sleep
 #Sets up a global variable that holds the users score - this makes it useable across different functions
 SCORE = 0
 
-
 #Start up screen
 #Prints the game name, and informs the user of how the game works
 def start_up():
@@ -18,10 +17,9 @@ def start_up():
         admin_mode()
     else:
         print(f"Thank you, {name}.")
-        print(
-            "Your journey will begin shortly.\n\nYou will be presented with 10 scenarios, each with 3 options for you to choose from.\nYou need to decide which option to choose.\n\nChoose wisely, as your answers will determine if you are fit to be an Environmental Activist, or if you are doomed for all eternity.\n\n"
-        )
-
+        print("Your journey will begin shortly.\n\nYou will be presented with 10 scenarios, each with 3 options for you to choose from.\nYou need to decide which option to choose.\n\nChoose wisely, as your answers will determine if you are fit to be an Environmental Activist, or if you are doomed for all eternity.\n\n")
+        print("For each scenario, make sure you input either 'a', 'b', or 'c' relating to which answer you want to pick.\n\n")
+        sleep(3)
 
 #This function is for admin purposes - you can update scenarios/add new scenarios/delete scenarios
 def admin_mode():
@@ -30,8 +28,6 @@ def admin_mode():
         "Print Scenarios", "Exit Admin Mode", "Exit Application"
     ]
     print("Admin Menu:\n")
-    #add_new_scenario()
-    #print(scenarios.scenarios)
     print(f"{'Task':<6}{'Operation':<20}")
     for i in range(0, 6):
         print(f"{i:<6}{menu_options[i]:<20}")
@@ -58,7 +54,7 @@ def admin_mode():
         print("Thanks for visiting")
         exit()
     else:
-        print("Please select a number between 0 - 4:\n")
+        print("Please select a number between 0 - 5:\n")
 
 
 #This function handles adding new items to scenarios
@@ -98,13 +94,14 @@ def update_scenario():
     best_answer = input("Please enter the positive answer:\n")
     neutral_answer = input("Please enter the neutral answer:\n")
     negative_answer = input("Please enter the negative answer:\n")
-    scenarios.scenarios[scenario_number]["scenario"] = scenario
-    scenarios.scenarios[scenario_number]["answers"] = [
-        neutral_answer, negative_answer, best_answer
-    ]
-    scenarios.scenarios[scenario_number]["best_answer"] = "c"
-    scenarios.scenarios[scenario_number]["neutral_answer"] = "a"
-    scenarios.scenarios[scenario_number]["negative_answer"] = "b"
+    temp_dict = {
+        "scenario": scenario,
+        "answers": [neutral_answer, negative_answer, best_answer],
+        "best_answer": best_answer,
+        "neutral_answer": neutral_answer,
+        "negative_answer": negative_answer
+    }
+    scenarios.scenarios.update({scenario_number: temp_dict})
     print_scenarios()
 
 
@@ -129,9 +126,12 @@ def add_score(value):
 #The neutral answer doesn't call add_score() because the score for a neutral answer is 0 so it won't change the current score
 def situations(situation):
     print(situation.get("scenario"))
+    answers = situation.get("answers")
+    for i in range(0,3):
+        print(answers[i])
     valid_input = False
     while valid_input == False:
-        user_answer = input(situation.get("answers"))
+        user_answer = input("\nWhich option should she choose?\n")
         if user_answer.lower() == situation.get("best_answer"):
             print("You've chosen the most environmentally friendly option.")
             add_score(10)
@@ -169,24 +169,23 @@ def print_ending():
 #This is the main function. It calls all the other functions
 def main():
     start_up()
-    call_scenarios()
-    print(SCORE)
-    print_ending()
-    print("\n\n")
-    restart = ""
-    while restart.lower != "no":
-        restart = input(
-            "Would you like to try again to get a different ending?")
-        if restart.lower() == "yes":
+    restart = True
+    while restart:
+        call_scenarios()
+        print(SCORE)
+        print_ending()
+        print("\n\n")
+        repeat = input("Would you like to try again to get a different ending?")
+        if repeat.lower() == "yes":
             print("restarting...")
             print("\n\n")
-            call_scenarios()
-        elif restart.lower() == "no":
+            sleep(3)
+        elif repeat.lower() == "no":
             print("Thanks for playing!")
             quit()
         else:
             print("hmmm... I don't recognise that word.")
-
+    
 
 #This calls our main function so the code will run
 main()
