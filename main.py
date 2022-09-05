@@ -43,11 +43,11 @@ def admin_mode():
     elif menu_select == 3:
         print_scenarios()
     elif menu_select == 4:
-        print("Game starting in 3...")
+        print("Game starting in 3...", end="")
         sleep(1)
-        print("2...")
+        print("2...", end="")
         sleep(1)
-        print("1...")
+        print("1...", end="")
         sleep(1)
         print("\n")
     elif menu_select == 5:
