@@ -175,16 +175,18 @@ def main():
         print(SCORE)
         print_ending()
         print("\n\n")
-        repeat = input("Would you like to try again to get a different ending?")
-        if repeat.lower() == "yes":
-            print("restarting...")
-            print("\n\n")
-            sleep(3)
-        elif repeat.lower() == "no":
-            print("Thanks for playing!")
-            quit()
-        else:
-            print("hmmm... I don't recognise that word.")
+        repeat = input("Would you like to try again to get a different ending? ")
+        while repeat.lower() != "yes":
+            if repeat.lower() == "yes":
+                print("restarting...")
+                print("\n\n")
+                sleep(3)
+            elif repeat.lower() == "no":
+                print("Thanks for playing!")
+                quit()
+            else:
+                print("hmmm... I don't recognise that word.")
+            repeat = input("Would you like to try again to get a different ending? ")
     
 
 #This calls our main function so the code will run
