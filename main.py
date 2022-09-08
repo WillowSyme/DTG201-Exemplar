@@ -12,11 +12,11 @@ def start_up():
         "~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~\n~ Welcome To: Environmental Activists ~\n~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~"
     )
     name = input("To begin, please enter your name: ")
-    if name.lower() == "will":
-        print(f"Thank you {name}. Now entering Admin Mode.")
+    if name.lower().strip() == "will":
+        print(f"Thank you {name.strip()}. Now entering Admin Mode.")
         admin_mode()
     else:
-        print(f"Thank you, {name}.")
+        print(f"Thank you, {name.strip()}.")
         print("Your journey will begin shortly.\n\nYou will be presented with 10 scenarios, each with 3 options for you to choose from.\nYou need to decide which option to choose.\n\nChoose wisely, as your answers will determine if you are fit to be an Environmental Activist, or if you are doomed for all eternity.\n\n")
         print("For each scenario, make sure you input either 'a', 'b', or 'c' relating to which answer you want to pick.\n\n")
         sleep(3)
@@ -32,7 +32,7 @@ def admin_mode():
     for i in range(0, 6):
         print(f"{i:<6}{menu_options[i]:<20}")
     print("\n")
-    menu_select = int(input("Which menu item would you like to select?: "))
+    menu_select = int(input("Which menu item would you like to select?: ").strip())
 
     if menu_select == 0:
         add_new_scenario()
@@ -59,10 +59,10 @@ def admin_mode():
 
 #This function handles adding new items to scenarios
 def add_new_scenario():
-    scenario = input("What is the new scenario you'd like to add?\n")
-    best_answer = input("Which answer is the positive answer?\n")
-    neutral_answer = input("Which answer is the neutral answer?\n")
-    negative_answer = input("Which answer is the negative answer?\n")
+    scenario = input("What is the new scenario you'd like to add?\n").strip()
+    best_answer = input("Which answer is the positive answer?\n").strip()
+    neutral_answer = input("Which answer is the neutral answer?\n").strip()
+    negative_answer = input("Which answer is the negative answer?\n").strip()
     next_scenario = len(scenarios.scenarios) + 1
     temp_dict = {
         next_scenario: {
@@ -82,18 +82,18 @@ def remove_scenario():
     scenario_num = int(
         input(
             "Please enter the number of the scenario you are wanting to remove: "
-        ))
+        ).strip())
     scenarios.scenarios.pop(scenario_num)
     print_scenarios()
 
 
 #This function updates an existing scenario
 def update_scenario():
-    scenario_number = int(input("Which Scenario are you wanting to update?: "))
-    scenario = input("Please enter the new scenario:\n")
-    best_answer = input("Please enter the positive answer:\n")
-    neutral_answer = input("Please enter the neutral answer:\n")
-    negative_answer = input("Please enter the negative answer:\n")
+    scenario_number = int(input("Which Scenario are you wanting to update?: ").strip())
+    scenario = input("Please enter the new scenario:\n").strip()
+    best_answer = input("Please enter the positive answer:\n").strip()
+    neutral_answer = input("Please enter the neutral answer:\n").strip()
+    negative_answer = input("Please enter the negative answer:\n").strip()
     temp_dict = {
         "scenario": scenario,
         "answers": [neutral_answer, negative_answer, best_answer],
@@ -107,11 +107,18 @@ def update_scenario():
 
 #This function is used specifically for admin mode to print out the dictionary again to show what has been added or removed
 def print_scenarios():
-    for i in range(1, len(scenarios.scenarios) + 1):
-        print(f"Scenario {i}")
-        print(scenarios.scenarios.get(i).get("scenario"))
-        print(scenarios.scenarios.get(i).get("answers"))
-        print("\n")
+    length = len(scenarios.scenarios)
+    if length <= 10:
+        length = 11
+    else:
+        length += 1
+    for i in range(1, length):
+        scen = scenarios.scenarios.get(i)
+        if scen:
+            print(f"Scenario {i}")
+            print(scen.get("scenario"))
+            print(scen.get("answers"))
+            print("\n")
 
     admin_mode()
 
@@ -131,15 +138,15 @@ def situations(situation):
         print(answers[i])
     valid_input = False
     while valid_input == False:
-        user_answer = input("\nWhich option should she choose?\n")
-        if user_answer.lower() == situation.get("best_answer"):
+        user_answer = input("\nWhich option should she choose?\n").lower().strip()
+        if user_answer == situation.get("best_answer"):
             print("You've chosen the most environmentally friendly option.")
             add_score(10)
             valid_input = True
-        elif user_answer.lower() == situation.get("neutral_answer"):
+        elif user_answer == situation.get("neutral_answer"):
             print("You've picked the in-the-middle option.")
             valid_input = True
-        elif user_answer.lower() == situation.get("negative_answer"):
+        elif user_answer == situation.get("negative_answer"):
             print("You've chosen the least environmentally friendly option.")
             add_score(-5)
             valid_input = True
@@ -149,10 +156,17 @@ def situations(situation):
 
 #This function prints out each scenario
 def call_scenarios():
-    for i in range(1, len(scenarios.scenarios) + 1):
-        print(f"Scenario {i}")
-        situations(scenarios.scenarios.get(i))
-        print("\n")
+    length = len(scenarios.scenarios)
+    if length <= 10:
+        length = 11
+    else:
+        length += 1
+    for i in range(1, length):
+        scen = scenarios.scenarios.get(i)
+        if scen:
+            print(f"Scenario {i}")
+            situations(scen)
+            print("\n")
 
 
 #This function prints out the ending based on the players final score
@@ -176,17 +190,18 @@ def main():
         print_ending()
         print("\n\n")
         repeat = input("Would you like to try again to get a different ending? ")
-        while repeat.lower() != "yes":
-            if repeat.lower() == "yes":
+        while repeat != "yes":
+            repeat = repeat.lower().strip()
+            if repeat == "yes":
                 print("restarting...")
                 print("\n\n")
                 sleep(3)
-            elif repeat.lower() == "no":
+            elif repeat == "no":
                 print("Thanks for playing!")
                 quit()
             else:
                 print("hmmm... I don't recognise that word.")
-            repeat = input("Would you like to try again to get a different ending? ")
+                repeat = input("Would you like to try again to get a different ending? ")
     
 
 #This calls our main function so the code will run
